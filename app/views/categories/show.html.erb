@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {background-color: powderblue;}
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h1><%= @category.name %></h1>
+
+<h2>Reviews</h2>
+<% @category.reviews.each do |review| %>
+
+  <p>
+    <strong>comment:</strong>
+    <%= review.comment %>
+  </p>
+<% end %>
+
+<h2>Add a review:</h2>
+<%= form_with model: [ @category.restaurant, @category, @category.reviews.build ]  do |form| %>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_field :comment %>
+  </p>
+    <%= form.submit %>
+  </p>
+<% end %>
+  

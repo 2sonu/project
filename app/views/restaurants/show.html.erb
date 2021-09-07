@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {background-color: powderblue;}
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+
+<h1><%= @restaurant.name %></h1>
+
+<p><%= @restaurant.address %></p>
+
+<%= link_to "create categories",  new_restaurant_category_path(@restaurant)%>
+<!DOCTYPE html>
+<html>
+<style>
+body {background-color: powderblue;}
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+<tbody>   
+      <% @categories.each do |category| %>   
+          <tr>   
+            <td><%= category.name %></td>   
+              
+               <div>   
+               <td>   
+                <%= link_to 'Show',  restaurant_category_path(id: category.id,restaurant_id:@restaurant.id) %>   
+                <%= link_to 'Edit', edit_restaurant_category_path(id: category.id,restaurant_id:@restaurant.id) %>   
+                <%= link_to 'Delete', restaurant_category_path(id: category.id,restaurant_id:@restaurant.id), 
+                       method: :delete,
+                       data: { confirm: "Are you sure?" } %>   
+              </div>   
+            </td>   
+          </tr>   
+      <% end %>   
+      </tbody>   
+    </table>   
+  </body>   
+</html>  
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {background-color: powderblue;}
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h1 style="background-color:rgb(235, 147, 238);"><center>Restaurant List</center></h1>
+  <p>   
+   <%= link_to 'Add Restaurant', new_restaurant_path %>   
+  </p>    
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Actions</th>
+  </tr>
+<tbody>   
+      <% @restaurants.each do |restaurant| %>   
+          <tr>   
+            <td><%= restaurant.name %></td>   
+            <td><%= restaurant.address %></td>     
+               <div>   
+               <td>   
+                <%= link_to 'Show', restaurant_path(restaurant) %>   
+                <%= link_to 'Edit', edit_restaurant_path(restaurant) %>   
+                <%= link_to 'Delete', restaurant_path(restaurant), 
+                       method: :delete,
+                       data: { confirm: "Are you sure?" } %>   
+              </div>   
+            </td>   
+          </tr>   
+      <% end %>   
+      </tbody>   
+    </table>   
+  </body>   
+</html>  
+
+
